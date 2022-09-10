@@ -12,7 +12,7 @@ db = mongodb_client.db
 
 @app.route('/')
 def home():  # put application's code here
-    return render_template("sign_up.html")
+    return render_template("home_page.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
