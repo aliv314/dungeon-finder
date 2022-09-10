@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 from flask import Flask, redirect, url_for, render_template
-=======
 from flask import Flask
 from flask_pymongo import PyMongo
->>>>>>> d55056dafcd3d6dbdb7b3ffb955f4063e2cef221
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = ""
