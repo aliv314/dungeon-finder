@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, redirect, flash
 from pymongo import MongoClient
 import bcrypt
+import requests
 
 app = Flask(__name__)
 
@@ -9,6 +10,19 @@ client = MongoClient('mongodb+srv://testuser:Q2PYvAxN79Diu5QX@tinkydb.9hvmnek.mo
 db = client.get_database("DungeonFinder")
 records = db.users
 gameinfo = db.gameinfo
+
+#Grabs the Game Name and Images through API calls
+api_image = 'https://api.boardgameatlas.com/api/game/images?limit=20&client_id=BPsyAhFgcY'
+imageCall = requests.get(api_image).json()
+imageTest = imageCall['images'][0]['url']
+gameID = imageCall['images'][0]['game']['id']
+api_name = 'https://api.boardgameatlas.com/api/search?ids={0}&client_id=BPsyAhFgcY'.format(gameID)
+nameCall = requests.get(api_name).json()
+gameName = nameCall['games'][0]['name']
+
+print(imageTest)
+print(gameName)
+
 
 #Test method to see if database is connected
 records.count_documents({})
