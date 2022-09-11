@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint
+from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint, session
 import geocoder
 from pymongo import MongoClient
 import bcrypt
@@ -20,6 +20,7 @@ def home():  # put application's code here
 client = MongoClient('mongodb+srv://testuser:Q2PYvAxN79Diu5QX@tinkydb.9hvmnek.mongodb.net/?retryWrites=true&w=majority')
 db = client.get_database("DungeonFinder")
 records = db.users
+location = db.locations
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -29,8 +30,7 @@ def home():  # put application's code here
     if request.method == 'POST':
         content = request.form['content']
         return redirect(url_for('home'))
-    db.party.createIndex({"location": "2dsphere"})
-    # https://www.mongodb.com/docs/manual/reference/operator/query/near/#behavior
+    #https://www.mongodb.com/docs/manual/reference/operator/query/near/#behavior
     marked_parties = db.party.find(
         {"location":
             {"$near":
@@ -47,7 +47,7 @@ def home():  # put application's code here
     return render_template("home_page.html", markers=markers, lat=lat, lon=lon)
 
 
-@app.route('/create-party/')
+@app.route('/create-party')
 def create():
     print("Clicked create!")
     if request.method == "POST":

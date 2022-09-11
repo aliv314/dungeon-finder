@@ -1,6 +1,8 @@
-from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint
+from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint, session
 from pymongo import MongoClient
 import bcrypt
+from home import importTest
+
    
 login = Blueprint("login", __name__, static_folder="static", template_folder='templates')
 
@@ -13,13 +15,11 @@ gameinfo = db.gameinfo
 @login.route('/sign-in', methods=('GET','POST'))
 def sign_in():  # put application's code here
     if request.method=='POST':
-        username = request.form['username']
-        password = request.form['password'] 
+        if "email" in session:
+            email = session['email']
+            return render_template('sign_in.html', email=email)
+        else:
+            return redirect(url_for(sign_in))
 
-        #Checks to see if a user is creating an account using existing credentials. Also checks to make sure password is input correctly
-    user_found = records.find_one({'username': username})
-    if user_found:
-        message = 'There already is a user by that name'
-        return render_template('sign_up.html', message=message)
 
     return render_template("sign_up.html")
