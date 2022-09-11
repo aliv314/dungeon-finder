@@ -3,7 +3,6 @@ from pymongo import MongoClient
 import bcrypt
 
 app = Flask(__name__)
-
 importTest = Blueprint("importTest", __name__, static_folder="static", template_folder='templates')
 
 #setup mongodb 
@@ -14,18 +13,9 @@ gameinfo = db.gameinfo
 
 #Test method to see if database is connected
 
-@importTest.route("/sign-up")
-def sign_up():
-    return render_template(sign_up.html)
-
 @importTest.route('/', methods=('GET','POST'))
 def home():  # put application's code here
-    if request.method=='POST':
-        content = request.form['content']
-        return redirect(url_for('home'))
-
     return render_template("home_page.html")
-
 
     @app.route('/sign-in', methods=('GET','POST'))
     def login():  # put application's code here
