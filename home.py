@@ -20,29 +20,41 @@ def home():  # put application's code here
 client = MongoClient('mongodb+srv://testuser:Q2PYvAxN79Diu5QX@tinkydb.9hvmnek.mongodb.net/?retryWrites=true&w=majority')
 db = client.get_database("DungeonFinder")
 records = db.users
-location = db.locations
-
+party = db.party
 
 @app.route('/', methods=('GET', 'POST'))
 def home():  # put application's code here
+    idC = 0
+    idd = 'party' + str(idC)
+    idC += 1
+
     lat = g.latlng[0]
     lon = g.latlng[1]
+    db.collection.create_index({ "location": "2dsphere"} )
+
     if request.method == 'POST':
         content = request.form['content']
         return redirect(url_for('home'))
-    #https://www.mongodb.com/docs/manual/reference/operator/query/near/#behavior
+    # https://www.mongodb.com/docs/manual/reference/operator/query/near/#behavior
     marked_parties = db.party.find(
         {"location":
             {"$near":
                 {"$geometry":
-                    {"type" : "Point", "coordinates" : [lon, lat]}, "$maxDistance":1000
+                    {"type": "Point", "coordinates": [lon, lat]}, "$maxDistance":1000
                  }
              }
          })
     markers = []
     # Mongo uses longitude, latitude; leaflet uses latitude, longitude, so we flip them.
     for i in marked_parties:
-        markers.append([i["location"]["coordinates"][1], i["location"]["coordinates"][0]])
+        markers += "var {idd} = L.marker([{latitude}, {longitude}]);\
+                {idd}.addTo(map).bindPopup('{party} <br> {proficiency}');"\
+            .format(
+            idd=idd,
+            latitude=i["location"]["coordinates"][0],
+            longitude=i["location"]["coordinates"][1],
+            party=i["name"],
+            proficiency=i["proficiency"])
 
     return render_template("home_page.html", markers=markers, lat=lat, lon=lon)
 
