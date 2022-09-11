@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends "navbar.html" %} {% block title %} Sign Up {% endblock %} {% block content %}
+    <h1>
+        Sign In!
+    <span class="badge rounded-pill bg-primary">Welcome Back!</span>
+    </h1>
 <body>
-
-</body>
-</html>
+    <form method="POST">
+        <div class="mb-3">
+                <div class="col">
+                <label for="exampleUsername" class="form-label">Username</label>
+                </div>
+                <div class="col">
+                    <!-- Change input type -->
+                <input type="username" name="username" class="form-control" id="exampleInputEmail1">
+                </div>
+        </div>
+          <div class="container">
+              <div class="col">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+              </div>
+              <div class="col">
+                    <!-- Change input type -->
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+              </div>
+            </div>
+                    <!-- Login button type -->
+          <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+  </body>
+{% endblock %}

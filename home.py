@@ -1,7 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint
 from pymongo import MongoClient
 import bcrypt
-import requests
 
 app = Flask(__name__)
 

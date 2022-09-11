@@ -1,31 +1,45 @@
 {% extends "navbar.html" %} {% block title %} Sign Up {% endblock %} {% block content %}
-  <head>
-    <h1 style="color:blue;border-width:3px;border-style:solid;border-color: blueviolet">
-        Sign Up
-    </h1>
-  </head>
+  <h1>
+        Sign Up!
+  </h1>
   <body>
     <form method="POST">
         <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <div class="col">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            </div>
+            <div class="col">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="username" name="username" class="form-control" id="username">
+            <div class="col">
+            <label for="exampleUsername" class="form-label">Username</label>
+            </div>
+            <div class="col">
+            <input type="username" name="username" class="form-control" id="exampleInputEmail1">
+            </div>
         </div>
           <div class="mb-3">
-            <label for="pass1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="pass1">
+              <div class="col">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+              </div>
+              <div class="col">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+              </div>
           </div>
           <div class="mb-3">
-            <label for="pass2" class="form-label">Confirm Password</label>
-            <input type="password" name="confirmPassword" class="form-control" id="pass2">
+              <div class="col">
+            <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+              </div>
+              <div class="col">
+            <input type="password" name="confirmPassword" class="form-control" id="exampleInputPassword2">
+              </div>
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
-            <label class="form-check-label" for="checkbox">Agree to Terms of Service</label>
+            <input type="checkbox" name="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Agree to Terms of Service</label>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
