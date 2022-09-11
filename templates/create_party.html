@@ -1,33 +1,41 @@
 {% extends "home_page.html" %}
 {% block title %} Create Party {%  endblock %}
-<!-- Vertically centered modal -->
 {% block content %}
-    <!--
-    <div class="modal modal-dialog modal-dialog-centered" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <form action="#" method="post">
+  <div class="container">
+          <div class="row">
+              <!-- Col 1 -->
+                  <div class="col mx-5 mt-5 align-self-center start-50">
+                      <label for="formGroupExampleInput2">Party Name:</label>
+                      <div class="input-group input-group-lg mt-2">
+                          <input type="text" name = "party-name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                      </div>
+                      <label for="formGroupExampleInput2">Game:</label>
+                      <div class="input-group input-group-lg mt-2">
+                          <input type="text" name = "game" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                      </div>
+                      <!-- Change to drop down -->
+                      <label for="formGroupExampleInput2">Proficiency</label>
+                      <div class="form-group mt-2">
+                        <select name="proficiency_select" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option>Novice</option>
+                            <option>Apprentice</option>
+                            <option>Adept</option>
+                            <option>Expert</option>
+                            <option>Master</option>
+                            <option>Legendary!</option>
+                        </select>
+                      </div>
+                      <div class="position-absolute mt-5">
+                          <button type="button" class="btn btn-lg btn-primary btn-success"> Submit </button>
+                          <button type="button" class="btn btn-lg btn-s btn-danger"><a href="/"> Cancel </a></button>
+                      </div>
+                  </div>
+              <!-- Col 2 -->
+                  <div class = "col mx-5 mt-5 align-self-center start-50">
+                      <!-- <img src="/static/no-logo-transparent.png"  height = "210" width="154" class = "rounded img-thumbnail" alt="/static/no-logo-transparent.png">-->
+                  </div>
           </div>
-          <div class="modal-body">
-              {{ modal_messages() }}
-              <form action="#" method="post">
-                <p>Party Name:</p>
-                <p><input type="text" name = "partyName"></p>
-                <p>Game: </p>
-                <p><input type="text" name = "Game"></p>
-                <p>Proficiency:</p>
-                <!Change this to a drop down list later.>
-                <p><input type="text" name = "Proficiency"></p>
-                <p><input type="submit" value="submit"></p>
-              </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
+  </div>
+  </form>
 {% endblock %}
