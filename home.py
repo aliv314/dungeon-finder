@@ -1,5 +1,5 @@
 import geocoder
-
+from flask_modals import Modal
 from flask import Flask, url_for, render_template, request, redirect
 from pymongo import MongoClient
 
@@ -38,20 +38,19 @@ def home():  # put application's code here
     return render_template("home_page.html",  markers=markers, lat=g.latlng[0], lon=g.latlng[1])
 
 
-@app.route('/create-party', methods=(["POST"]))
+@app.route('/create-party/', methods = ['GET'])
 def create():
     print("Clicked create!")
+    return render_template("create_party.html")
 
-    return render_template("home_page.html")
 
-
-@app.route('/confirm-party', methods=(["POST"]))
+@app.route('/confirm-party/', methods=(['POST']))
 def confirmCreate():
 
     return None
 
 
-@app.route('/search-party', methods=(["GET, POST"]))
+@app.route('/search-party/', methods=(['GET, POST']))
 def search():
     print("Clicked search!")
 
