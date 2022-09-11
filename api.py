@@ -1,4 +1,6 @@
 #Grabs the Game Name and Images through API calls
+import requests
+
 api_image = 'https://api.boardgameatlas.com/api/game/images?limit=20&client_id=BPsyAhFgcY'
 imageCall = requests.get(api_image).json()
 imageTest = imageCall['images'][0]['url']
