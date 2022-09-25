@@ -1,8 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint, session
 from pymongo import MongoClient
-import bcrypt
 import geocoder
-from home import importTest
 
 party = Blueprint("patrty", __name__, static_folder="static", template_folder='templates')
 g = geocoder.ip('me')

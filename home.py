@@ -58,21 +58,5 @@ def home():  # put application's code here
     """
     return render_template("home_page.html")
 
-@app.route('/create-party')
-def create():
-    print("Clicked create!")
-    if request.method == "POST":
-        db.party.insert_one({
-            "name": request.form["party-name"],
-            "game": request.form["game"],
-            "proficiency": request.form["proficiency_select"],
-            "location": {
-                "coordinates": [g.latlng[0], g.latlng[1]],
-                "type": "Point"
-            }
-        })
-    return render_template("create_party.html")
-
-
 if __name__ == '__main__':
     home.run(debug=True)
