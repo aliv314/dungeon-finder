@@ -30,7 +30,7 @@ def home():  # put application's code here
 
     lat = g.latlng[0]
     lon = g.latlng[1]
-    db.collection.create_index({ "location": "2dsphere"} )
+    #db.collection.create_index({ "location": "2dsphere"} )
 
     if request.method == 'POST':
         content = request.form['content']
@@ -45,7 +45,8 @@ def home():  # put application's code here
              }
          })
     markers = []
-    # Mongo uses longitude, latitude; leaflet uses latitude, longitude, so we flip them.
+    #Mongo uses longitude, latitude; leaflet uses latitude, longitude, so we flip them.
+    """
     for i in marked_parties:
         markers += "var {idd} = L.marker([{latitude}, {longitude}]);\
                 {idd}.addTo(map).bindPopup('{party} <br> {proficiency}');"\
@@ -57,7 +58,8 @@ def home():  # put application's code here
             proficiency=i["proficiency"])
 
     return render_template("home_page.html", markers=markers, lat=lat, lon=lon)
-
+    """
+    return render_template("home_page.html")
 
 @app.route('/create-party')
 def create():
