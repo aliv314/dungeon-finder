@@ -7,11 +7,11 @@ import json
 app = Flask(__name__)
 g = geocoder.ip('me')
 
-importTest = Blueprint("importTest", __name__, static_folder="static", template_folder='templates')
+home_page = Blueprint("importTest", __name__, static_folder="static", template_folder='templates')
 
 
 # Test method to see if database is connected
-@importTest.route('/', methods=('GET', 'POST'))
+@home_page.route('/', methods=('GET', 'POST'))
 def home():  # put application's code here
     return render_template("home_page.html")
 
@@ -24,9 +24,6 @@ party = db.party
 
 @app.route('/', methods=('GET', 'POST'))
 def home():  # put application's code here
-    idC = 0
-    idd = 'party' + str(idC)
-    idC += 1
 
     lat = g.latlng[0]
     lon = g.latlng[1]

@@ -12,7 +12,7 @@ db = client.get_database("DungeonFinder")
 records = db.users
 gameinfo = db.gameinfo
    
-@login.route('/sign-in', methods=('GET','POST'))
+@login.route('/', methods=('GET','POST'))
 def sign_in():  # put application's code here
     if request.method=='POST':
         if "email" in session:

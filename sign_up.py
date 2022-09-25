@@ -11,7 +11,7 @@ db = client.get_database("DungeonFinder")
 records = db.users
 gameinfo = db.gameinfo
 
-@signUp.route('/sign-up', methods=('GET','POST'))
+@signUp.route('/', methods=('GET','POST'))
 def sign_up():
     if request.method=='POST':
         email = request.form['email']

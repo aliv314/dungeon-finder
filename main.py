@@ -1,14 +1,15 @@
 from flask import Flask, render_template, session
-from home import importTest
-from sign_up import signUp
-from sign_in import login
 from create_party import party
 
-app = Flask(__name__)
-app.register_blueprint(importTest, url_prefix="")
-app.register_blueprint(signUp, url_prefix="")
-app.register_blueprint(login, url_prefix="")
 
+from home import home_page
+from sign_up import signUp
+from sign_in import login
+
+app = Flask(__name__)
+app.register_blueprint(home_page, url_prefix="/")
+app.register_blueprint(signUp, url_prefix="/signup")
+app.register_blueprint(login, url_prefix="/signin")
 
 #Tests to make sure blueprint is routing properly 
 @app.route("/")
