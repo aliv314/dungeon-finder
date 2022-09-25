@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, redirect, flash, Blueprint, session
 from pymongo import MongoClient
 import bcrypt
-from home import importTest
+from home import home_page
 
 signUp = Blueprint("signUp", __name__, static_folder="static", template_folder='templates')
 
