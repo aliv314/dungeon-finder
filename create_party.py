@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, redirect, 
 from pymongo import MongoClient
 import geocoder
 
-party = Blueprint("patrty", __name__, static_folder="static", template_folder='templates')
+party = Blueprint("create_party", __name__, static_folder="static", template_folder='templates')
 g = geocoder.ip('me')
 
 
@@ -12,7 +12,7 @@ db = client.get_database("DungeonFinder")
 records = db.users
 gameinfo = db.gameinfo
 
-@party.route('/create-party')
+@party.route('/')
 def create():
     print("Clicked create!")
     if request.method == "POST":
